@@ -9,18 +9,23 @@ from diffusers import StableDiffusionInpaintPipeline
 from torchvision.transforms import ToPILImage
 from utils import preprocess, prepare_mask_and_masked_image, recover_image, resize_and_crop
 
+# 直接使用，无需额外安装
+import torch
+from diffusers import StableDiffusionPipeline, StableDiffusionInpaintPipeline
+from transformers import pipeline
+
 gr.close_all()
 topil = ToPILImage()
 
 pipe_inpaint = StableDiffusionInpaintPipeline.from_pretrained(
-    ## "runwayml/stable-diffusion-inpainting",
-    ## revision="fp16",
-    ## torch_dtype=torch.float16,
-    ## safety_checker=None,
-    ## "runwayml/stable-diffusion-inpainting",
-    "PrunaAI/runwayml-stable-diffusion-v1-5-turbo-tiny-green-smashed",
-    revision="fp16",
-    torch_dtype=torch.float16
+    # "runwayml/stable-diffusion-inpainting",
+    # revision="fp16",
+    # torch_dtype=torch.float16,
+    # safety_checker=None,
+    "/kaggle/input/stable-diffusion-xl-1.0-inpainting-0.1",  # 使用数据集路径
+    torch_dtype=torch.float16,
+    safety_checker=None,
+    local_files_only=True  # 重要：强制使用本地文件
 )
 pipe_inpaint = pipe_inpaint.to("cuda")
 
