@@ -18,7 +18,7 @@ pipe_inpaint = StableDiffusionInpaintPipeline.from_pretrained(
     ## torch_dtype=torch.float16,
     ## safety_checker=None,
     ## "runwayml/stable-diffusion-inpainting",
-    "minh132/semi-stable-diffusion-inpainting",
+    "PrunaAI/runwayml-stable-diffusion-v1-5-turbo-tiny-green-smashed",
     revision="fp16",
     torch_dtype=torch.float16
 )
